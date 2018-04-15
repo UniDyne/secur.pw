@@ -13,13 +13,16 @@ Math.secRandom = (count) => {
 	return buff;
 };
 
+
 /* set up UI and events */
-window.ui = document.body.initUI();
-window.ui.syms.value = S_symbols;
-window.ui.btngen.addEventListener('click', () => { try { generate(); } catch(e) { alert(e.message); } });
-window.ui.btncopy.addEventListener('click', () => copyText(window.ui.pwlist) );
-window.ui.btnclear.addEventListener('click', () => clearPasswords() );
-window.ui.mast.addEventListener('click',()=>window.ui.about.classList.toggle('show'));
+document.addEventListener('DOMContentLoaded', () => {
+	window.ui = document.body.initUI();
+	window.ui.syms.value = S_symbols;
+	window.ui.btngen.addEventListener('click', () => { try { generate(); } catch(e) { alert(e.message); } });
+	window.ui.btncopy.addEventListener('click', () => copyText(window.ui.pwlist) );
+	window.ui.btnclear.addEventListener('click', () => clearPasswords() );
+	window.ui.mast.addEventListener('click',()=>window.ui.about.classList.toggle('show'));
+});
 
 /* This is where the magic happens */
 function generate() {
@@ -113,7 +116,6 @@ function displayPasswords(passwords) {
 /*==============
 	DATA
 ==============*/
-
 
 /* Character lists */
 var S_symbols = "`~!@#$%^&*()-_=+{}[]\|:;,<.>/?", S_lowercase = "abcdefghijklmnopqrstuvwxyz", S_uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ", S_numbers = "1234567890";
