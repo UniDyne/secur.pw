@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+<title>Secure Password Generator | secur.pw</title>
+</head>
+<body class="bg-light">
+<div class="container">
+	<div class="py-1 mt-4">
+		<h2 data-uid="mast" style="cursor:help;"><i class="fa fa-shield-alt" style="color:#36f;"></i> sec&#363;r.pw <small class="float-right pt-2 text-muted">Password Generator</small></h2>
+		<hr>
+	</div>
+	<div id="about" data-uid="about"><figure class="text-center p-4">
+		<p><em>This is an over-engineered password generator that runs entirely in your browser.</em></p>
+		<p>
+			This app uses the WebCrypto API in modern browsers to
+			source securely random data from which to derive passwords.
+			WebCrypto implementations have access to high-entropy seed
+			values and a higher quality random number generator than
+			what is normally available via <span class="mono">Math.rand()</span>.
+		</p>
+		<p>No data is ever transmitted back to the server.</p>
+
+	</figure></div>
+	<div class="row border-between mt-4">
+		<div class="col-md-6">
+			<h4 class="mb-3"><span class="text-muted">Parameters</span></h4>
+			<form method="dialog" action="javascript://">
+				<div class="row">
+					<div class="col-md-6 mb-3" data-balloon="Supports lengths between 6 and 64." data-balloon-pos="down">
+						<label for="passlen">Length</label>
+						<input type="number" class="form-control" id="passlen" data-uid="passlen" value="16" step="1" min="6" max="64">
+					</div>
+					<div class="col-md-6 mb-3" data-balloon="Generate up to 64 passwords at a time." data-balloon-pos="down">
+						<label for="qty">Quantity</label>
+						<input type="number" class="form-control" id="qty" data-uid="qty" value="1" step="1" min="1" max="64">
+					</div>
+				</div>
+				<hr class="mb-1">
+
+				<div class="row">
+
+				<div class="col-md-6">
+				<h6 class="mt-4 text-muted">Include</h6>
+				<div class="custom-control custom-checkbox" data-balloon="1 2 3 4 5 6 ..." data-balloon-pos="right">
+					<input type="checkbox" class="custom-control-input" id="incnum" data-uid="incnum" checked>
+					<label class="custom-control-label" for="incnum">Numbers</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="a b c d e f ..." data-balloon-pos="right">
+					<input type="checkbox" class="custom-control-input" id="inclow" data-uid="inclow" checked>
+					<label class="custom-control-label" for="inclow">Lowercase</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="A B C D E F ..." data-balloon-pos="right">
+					<input type="checkbox" class="custom-control-input" id="incup" data-uid="incup" checked>
+					<label class="custom-control-label" for="incup">Uppercase</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="Include symbols from field below." data-balloon-pos="right">
+					<input type="checkbox" class="custom-control-input" id="incsym" data-uid="incsym" checked>
+					<label class="custom-control-label" for="incsym">Symbols</label>
+				</div>
+				<div class="mt-3" data-balloon="Symbol characters." data-balloon-pos="down">
+					<label for="syms">Symbol List</label>
+					<input type="text" class="form-control form-control-sm" id="syms" data-uid="syms" value="">
+				</div>
+
+			</div><div class="col-md-6">
+				<h6 class="mt-4 text-muted">Exclude From Start</h6>
+				<div class="custom-control custom-checkbox" data-balloon="Never start with symbol." data-balloon-pos="left">
+					<input type="checkbox" class="custom-control-input" id="nosym" data-uid="nosym" checked>
+					<label class="custom-control-label" for="nosym">Symbols</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="Never start with number." data-balloon-pos="left">
+					<input type="checkbox" class="custom-control-input" id="nonum" data-uid="nonum" checked>
+					<label class="custom-control-label" for="nonum">Numbers</label>
+				</div>
+
+				<h6 class="mt-4 text-muted">Exceptions</h6>
+				
+				<div class="custom-control custom-checkbox" data-balloon="Excludes characters that look similar." data-balloon-pos="left">
+					<input type="checkbox" class="custom-control-input" id="nosim" data-uid="nosim" checked>
+					<label class="custom-control-label" for="nosim">Ambiguity</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="Prevents duplicate characters." data-balloon-pos="left">
+					<input type="checkbox" class="custom-control-input" id="nodup" data-uid="nodup">
+					<label class="custom-control-label" for="nodup">Duplicates</label>
+				</div>
+				<div class="custom-control custom-checkbox" data-balloon="Prevents sequential characters." data-balloon-pos="left">
+					<input type="checkbox" class="custom-control-input" id="noseq" data-uid="noseq">
+					<label class="custom-control-label" for="noseq">Sequences</label>
+				</div>
+				
+			</div>
+			<button class="btn btn-primary btn-lg btn-block mx-3 my-4" type="submit" data-uid="btngen"><i class="fa fa-cogs"></i> Generate</button>
+			</div>
+			
+			</form>
+		</div>
+		<div class="col-md-6">
+			<h4 class="mb-3"><span class="text-muted">Output</span></h4>
+			<div class="input-group">
+				<button class="btn btn-sm m-1" data-uid="btncopy" data-balloon="Copy All Passwords" data-balloon-pos="up"><i class="far fa-copy"></i> Copy All</button>
+				<button class="btn btn-sm m-1" data-uid="btnclear" data-balloon="Clear All Passwords" data-balloon-pos="up"><i class="far fa-trash-alt"></i> Clear All</button>
+			</div>
+			
+			<ul class="list-group my-3" data-uid="pwlist"></ul>
+			
+		</div>
+	</div>
+	<hr class="mb-0">
+	<small class="float-right text-muted">Version 0.5</small>
+</div>
+
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
