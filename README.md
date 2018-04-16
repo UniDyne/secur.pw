@@ -39,6 +39,11 @@ Once we have the correct number of characters for a password, we then check the 
 
 After that, the password is added to the results.
 
+### Framework
+I've used part of a custom framework for this project that is very minimalist. The framework is a separate project that may or may not be fleshed out in the future. I have also used Bootstrap, FontAwesome, and Balloon for the UI styling.
+
+### Performance
+When running with all options maxed, the generator requires an 8K buffer of random data, an additional 4K and some change as the results array is built, plus the DOM overhead to push the results which is much more data than those two. Using a profiler in Chrome, the generator slowly climbs to a JS heap of about 20M before garbage collection, after which it sheds a couple megs before the DOM manipulation. The DOM portion jumps as high as 14M and as low as just under 7M. There are no persistent resources used other than the event handlers, so the entire heap ends up getting garbage collected later. There is likely room for improvement.
 
 ### To-Do
 * Entropy / strength indicator for selected config
