@@ -167,5 +167,3 @@ var pwtmpl = {
 		}]
 	}]
 };
-
-//# sourceMappingURL=app.js.map

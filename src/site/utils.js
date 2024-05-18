@@ -79,5 +79,3 @@ function procUI(def,dx,ui) {
 	if(def.ui)ui[def.ui]=ele;
 	return {e:ele,ui:ui};
 }
-
-//# sourceMappingURL=utils.js.map
