@@ -1,4 +1,4 @@
-# secur.pw
+# [secur.pw](https://secur.pw)
 
 The goal of this project is to provide a browser-based resource for password and secure key generation by leveraging the WebCrypto API and combining that with an intuitive user experience. Most of all, this is a project that gives me a chance to experiment.
 
